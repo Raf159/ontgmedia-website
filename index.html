@@ -369,6 +369,7 @@
 <!-- ===================== JAVASCRIPT LOGIC ===================== -->
 <script>
  // Mobile menu toggle
+// Mobile menu toggle
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 menuBtn.addEventListener('click', () => {
@@ -387,10 +388,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// المفتاح الثابت بعد تنظيفه من أي مسافات زائدة تماماً
-const CLEAN_ACCESS_KEY = "ea7bec23-c08e-41d1-9b77-10b8ff1932ef".trim();
-
-// ---------- 1. Contact Form Handling (AJAX JSON POST) ----------
+// ---------- 1. Contact Form Handling (Standard FormData) ----------
 const form = document.getElementById('inquiry-form');
 const submitBtn = document.getElementById('submit-btn');
 const successMsg = document.getElementById('form-success');
@@ -400,20 +398,12 @@ form.addEventListener('submit', (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
+  // إرسال البيانات كـ FormData مباشرة وهي الطريقة القياسية والأكثر أماناً واستقراراً
   const formData = new FormData(form);
-  const object = Object.fromEntries(formData);
-  
-  // إجبار الكود على استخدام المفتاح النظيف الخالي من المسافات
-  object.access_key = CLEAN_ACCESS_KEY;
-  const json = JSON.stringify(object);
 
   fetch(form.action, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: json
+    body: formData
   })
   .then(async (response) => {
     let res = await response.json();
@@ -437,7 +427,7 @@ form.addEventListener('submit', (e) => {
   });
 });
 
-// ---------- 2. Pricing Lead Form Handling (AJAX JSON POST) ----------
+// ---------- 2. Pricing Lead Form Handling (Standard FormData) ----------
 const pricingForm = document.getElementById('pricing-inquiry-form');
 const pricingSubmitBtn = document.getElementById('p-submit-btn');
 const pricingSuccessMsg = document.getElementById('p-form-success');
@@ -447,20 +437,12 @@ pricingForm.addEventListener('submit', (e) => {
   pricingSubmitBtn.disabled = true;
   pricingSubmitBtn.textContent = 'Sending...';
 
+  // إرسال البيانات كـ FormData مباشرة للفورم الثاني أيضاً
   const formData = new FormData(pricingForm);
-  const object = Object.fromEntries(formData);
-  
-  // إجبار الكود على استخدام المفتاح النظيف الخالي من المسافات
-  object.access_key = CLEAN_ACCESS_KEY;
-  const json = JSON.stringify(object);
 
   fetch(pricingForm.action, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: json
+    body: formData
   })
   .then(async (response) => {
     let res = await response.json();
