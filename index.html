@@ -6,10 +6,12 @@
 <title>Ontario Grow Media | Web Design & Digital Marketing for Local Businesses</title>
 <meta name="description" content="Ontario Grow Media designs and builds websites for retail shops and small businesses, and manages their social media presence — real consultation, not generic templates.">
 
+<!-- ===================== FONTS ===================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+<!-- ===================== TAILWIND (CDN) ===================== -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -59,6 +61,7 @@
 
 <body class="antialiased">
 
+<!-- NAVIGATION HEADER -->
 <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-navy-900/80 backdrop-blur-md border-b border-white/5">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
     <div class="flex items-center justify-between h-20">
@@ -91,6 +94,7 @@
   </div>
 </header>
 
+<!-- HERO SECTION -->
 <section id="hero" class="relative bg-navy-900 dot-grid overflow-hidden pt-40 pb-28 sm:pt-44 sm:pb-36">
   <div class="absolute -top-32 -right-32 w-96 h-96 bg-mint/10 rounded-full blur-3xl"></div>
   <div class="absolute bottom-0 left-0 w-72 h-72 bg-mint/5 rounded-full blur-3xl"></div>
@@ -123,6 +127,7 @@
   </div>
 </section>
 
+<!-- SERVICES SECTION -->
 <section id="services" class="bg-paper py-24 sm:py-32">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
     <div class="reveal max-w-2xl mb-16">
@@ -164,6 +169,7 @@
   </div>
 </section>
 
+<!-- APPROACH SECTION -->
 <section id="approach" class="bg-navy-900 dot-grid py-24 sm:py-32 relative overflow-hidden">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
     <div class="reveal max-w-2xl mb-16">
@@ -191,6 +197,7 @@
   </div>
 </section>
 
+<!-- PRICING SECTION -->
 <section id="pricing" class="bg-paper py-24 sm:py-32">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
     <div class="reveal max-w-3xl mb-6">
@@ -199,21 +206,25 @@
       <p class="text-slate-500 text-lg leading-loose">Pricing below starts from the listed amounts. Every final proposal is customized to your business goals.</p>
     </div>
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
+      <!-- Starter -->
       <div class="reveal bg-white border border-ink/5 rounded-3xl p-8 flex flex-col">
         <h3 class="font-display font-extrabold text-xl text-ink mb-1.5">Starter Growth</h3>
         <div class="flex items-baseline gap-1.5 my-4"><span class="font-display font-extrabold text-3xl text-ink">$899</span><span class="text-slate-400 text-sm">CAD/mo</span></div>
         <a href="#pricing-form" class="w-full text-center bg-navy-900 text-white font-bold text-sm py-3 rounded-full mt-auto">Choose Starter</a>
       </div>
+      <!-- Business -->
       <div class="reveal bg-navy-900 border-2 border-mint rounded-3xl p-8 flex flex-col relative lg:scale-105">
         <h3 class="font-display font-extrabold text-xl text-white mb-1.5">Business Growth</h3>
         <div class="flex items-baseline gap-1.5 my-4"><span class="font-display font-extrabold text-3xl text-white">$1,799</span><span class="text-white/50 text-sm">CAD/mo</span></div>
         <a href="#pricing-form" class="w-full text-center bg-mint text-navy-950 font-bold text-sm py-3 rounded-full mt-auto">Choose Business</a>
       </div>
+      <!-- Premium -->
       <div class="reveal bg-white border border-ink/5 rounded-3xl p-8 flex flex-col">
         <h3 class="font-display font-extrabold text-xl text-ink mb-1.5">Premium Growth</h3>
         <div class="flex items-baseline gap-1.5 my-4"><span class="font-display font-extrabold text-3xl text-ink">$3,299</span><span class="text-slate-400 text-sm">CAD/mo</span></div>
         <a href="#pricing-form" class="w-full text-center bg-navy-900 text-white font-bold text-sm py-3 rounded-full mt-auto">Choose Premium</a>
       </div>
+      <!-- Enterprise -->
       <div class="reveal bg-white border border-ink/5 rounded-3xl p-8 flex flex-col">
         <h3 class="font-display font-extrabold text-xl text-ink mb-1.5">Enterprise Growth</h3>
         <div class="flex items-baseline gap-1.5 my-4"><span class="font-display font-extrabold text-3xl text-ink">$5,999</span><span class="text-slate-400 text-sm">CAD/mo</span></div>
@@ -223,6 +234,9 @@
   </div>
 </section>
 
+<!-- =========================================================
+     PRICING LEAD FORM (النموذج الأول - طلب عرض السعر)
+========================================================= -->
 <section id="pricing-form" class="bg-navy-900 dot-grid py-24 sm:py-32 relative overflow-hidden">
   <div class="absolute -top-32 -left-32 w-96 h-96 bg-mint/10 rounded-full blur-3xl"></div>
   <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
@@ -237,9 +251,12 @@
       </div>
 
       <div class="reveal bg-white p-10 sm:p-12">
+        <!-- تم توجيه الـ action إلى سيرفر Web3Forms الافتراضي للاستقبال -->
         <form id="pricing-inquiry-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
-          <input type="hidden" name="access_key" value="ea7bec23-c08e-44a3-9ed2-2c113dccf29e">
-          <input type="hidden" name="from_name" value="Ontario Grow - Pricing Form">
+          <!-- الحقول المخفية الأساسية الخاصة بمفتاح الحساب وعنوان الرسالة -->
+          <input type="hidden" name="access_key" value="ea7bec23-c08e-41d1-9b77-10b8ff1932ef">
+          <input type="hidden" name="subject" value="New Pricing Lead Request - ONTG Media">
+          <input type="hidden" name="from_name" value="ONTG Media Pricing Form">
           
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
@@ -291,6 +308,9 @@
   </div>
 </section>
 
+<!-- =========================================================
+     CONTACT FORM SECTION (النموذج الثاني - التواصل العام)
+========================================================= -->
 <section id="contact" class="bg-paper py-24 sm:py-32">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
     <div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-6 rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-900/10">
@@ -304,8 +324,10 @@
 
       <div class="reveal bg-white p-10 sm:p-12">
         <form id="inquiry-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
-          <input type="hidden" name="access_key" value="ea7bec23-c08e-44a3-9ed2-2c113dccf29e">
-          <input type="hidden" name="from_name" value="Ontario Grow - Contact Form">
+          <!-- الحقول المخفية الأساسية الخاصة بمفتاح الحساب وعنوان الرسالة -->
+          <input type="hidden" name="access_key" value="ea7bec23-c08e-41d1-9b77-10b8ff1932ef">
+          <input type="hidden" name="subject" value="New General Inquiry - ONTG Media">
+          <input type="hidden" name="from_name" value="ONTG Media Contact Form">
 
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
@@ -337,12 +359,14 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="bg-navy-950 border-t border-white/5 pt-16 pb-8">
   <div class="max-w-6xl mx-auto px-5 sm:px-8 text-center text-white/35 text-xs">
     <p>© 2026 Ontario Grow Media. All rights reserved.</p>
   </div>
 </footer>
 
+<!-- ===================== JAVASCRIPT LOGIC ===================== -->
 <script>
   // Mobile menu toggle
   const menuBtn = document.getElementById('menu-btn');
@@ -352,7 +376,7 @@
     menuBtn.setAttribute('aria-expanded', isOpen);
   });
 
-  // Scroll animations
+  // Scroll animations observer
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -363,7 +387,7 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // معالجة نموذج الاتصال الثاني عبر AJAX ليرسل لـ Web3Forms مباشرة دون مغادرة الصفحة
+  // ---------- 1. Contact Form Handling (AJAX JSON POST) ----------
   const form = document.getElementById('inquiry-form');
   const submitBtn = document.getElementById('submit-btn');
   const successMsg = document.getElementById('form-success');
@@ -373,13 +397,22 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
+    // تحويل حقول الـ Form إلى كائن عادي ثم إلى JSON نصي
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
     fetch(form.action, {
       method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: json
     })
-    .then(response => {
-      if (response.ok) {
+    .then(async (response) => {
+      let res = await response.json();
+      if (response.status === 200) {
         submitBtn.textContent = 'Submit Request';
         submitBtn.disabled = false;
         successMsg.classList.remove('hidden');
@@ -387,19 +420,19 @@
         form.reset();
         setTimeout(() => successMsg.classList.add('hidden'), 6000);
       } else {
-        alert('Something went wrong. Please try again.');
+        alert(res.message || 'Something went wrong. Please try again.');
         submitBtn.disabled = false;
         submitBtn.textContent = 'Submit Request';
       }
     })
     .catch(() => {
-      alert('Network error.');
+      alert('Network error. Please check your internet connection.');
       submitBtn.disabled = false;
       submitBtn.textContent = 'Submit Request';
     });
   });
 
-  // معالجة نموذج طلب السعر الأول عبر AJAX ليرسل لـ Web3Forms مباشرة دون مغادرة الصفحة
+  // ---------- 2. Pricing Lead Form Handling (AJAX JSON POST) ----------
   const pricingForm = document.getElementById('pricing-inquiry-form');
   const pricingSubmitBtn = document.getElementById('p-submit-btn');
   const pricingSuccessMsg = document.getElementById('p-form-success');
@@ -409,13 +442,22 @@
     pricingSubmitBtn.disabled = true;
     pricingSubmitBtn.textContent = 'Sending...';
 
+    // تحويل حقول فورم الأسعار الثاني إلى كائن ثم إلى JSON نصي
+    const formData = new FormData(pricingForm);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
     fetch(pricingForm.action, {
       method: 'POST',
-      body: new FormData(pricingForm),
-      headers: { 'Accept': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: json
     })
-    .then(response => {
-      if (response.ok) {
+    .then(async (response) => {
+      let res = await response.json();
+      if (response.status === 200) {
         pricingSubmitBtn.textContent = 'Submit Request';
         pricingSubmitBtn.disabled = false;
         pricingSuccessMsg.classList.remove('hidden');
@@ -423,13 +465,13 @@
         pricingForm.reset();
         setTimeout(() => pricingSuccessMsg.classList.add('hidden'), 7000);
       } else {
-        alert('Something went wrong. Please try again.');
+        alert(res.message || 'Something went wrong. Please try again.');
         pricingSubmitBtn.disabled = false;
         pricingSubmitBtn.textContent = 'Submit Request';
       }
     })
     .catch(() => {
-      alert('Network error.');
+      alert('Network error. Please check your internet connection.');
       pricingSubmitBtn.disabled = false;
       pricingSubmitBtn.textContent = 'Submit Request';
     });
