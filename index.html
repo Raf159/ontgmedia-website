@@ -368,114 +368,121 @@
 
 <!-- ===================== JAVASCRIPT LOGIC ===================== -->
 <script>
-  // Mobile menu toggle
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuBtn.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', isOpen);
+ // Mobile menu toggle
+const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+menuBtn.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', isOpen);
+});
+
+// Scroll animations observer
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
   });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // Scroll animations observer
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+// المفتاح الثابت بعد تنظيفه من أي مسافات زائدة تماماً
+const CLEAN_ACCESS_KEY = "ea7bec23-c08e-41d1-9b77-10b8ff1932ef".trim();
 
-  // ---------- 1. Contact Form Handling (AJAX JSON POST) ----------
-  const form = document.getElementById('inquiry-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const successMsg = document.getElementById('form-success');
+// ---------- 1. Contact Form Handling (AJAX JSON POST) ----------
+const form = document.getElementById('inquiry-form');
+const submitBtn = document.getElementById('submit-btn');
+const successMsg = document.getElementById('form-success');
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
 
-    // تحويل حقول الـ Form إلى كائن عادي ثم إلى JSON نصي
-    const formData = new FormData(form);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+  const formData = new FormData(form);
+  const object = Object.fromEntries(formData);
+  
+  // إجبار الكود على استخدام المفتاح النظيف الخالي من المسافات
+  object.access_key = CLEAN_ACCESS_KEY;
+  const json = JSON.stringify(object);
 
-    fetch(form.action, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: json
-    })
-    .then(async (response) => {
-      let res = await response.json();
-      if (response.status === 200) {
-        submitBtn.textContent = 'Submit Request';
-        submitBtn.disabled = false;
-        successMsg.classList.remove('hidden');
-        successMsg.classList.add('flex');
-        form.reset();
-        setTimeout(() => successMsg.classList.add('hidden'), 6000);
-      } else {
-        alert(res.message || 'Something went wrong. Please try again.');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Request';
-      }
-    })
-    .catch(() => {
-      alert('Network error. Please check your internet connection.');
+  fetch(form.action, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: json
+  })
+  .then(async (response) => {
+    let res = await response.json();
+    if (response.status === 200 || res.success) {
+      submitBtn.textContent = 'Submit Request';
+      submitBtn.disabled = false;
+      successMsg.classList.remove('hidden');
+      successMsg.classList.add('flex');
+      form.reset();
+      setTimeout(() => successMsg.classList.add('hidden'), 6000);
+    } else {
+      alert(res.message || 'Something went wrong. Please try again.');
       submitBtn.disabled = false;
       submitBtn.textContent = 'Submit Request';
-    });
+    }
+  })
+  .catch(() => {
+    alert('Network error. Please check your internet connection.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit Request';
   });
+});
 
-  // ---------- 2. Pricing Lead Form Handling (AJAX JSON POST) ----------
-  const pricingForm = document.getElementById('pricing-inquiry-form');
-  const pricingSubmitBtn = document.getElementById('p-submit-btn');
-  const pricingSuccessMsg = document.getElementById('p-form-success');
+// ---------- 2. Pricing Lead Form Handling (AJAX JSON POST) ----------
+const pricingForm = document.getElementById('pricing-inquiry-form');
+const pricingSubmitBtn = document.getElementById('p-submit-btn');
+const pricingSuccessMsg = document.getElementById('p-form-success');
 
-  pricingForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    pricingSubmitBtn.disabled = true;
-    pricingSubmitBtn.textContent = 'Sending...';
+pricingForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  pricingSubmitBtn.disabled = true;
+  pricingSubmitBtn.textContent = 'Sending...';
 
-    // تحويل حقول فورم الأسعار الثاني إلى كائن ثم إلى JSON نصي
-    const formData = new FormData(pricingForm);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+  const formData = new FormData(pricingForm);
+  const object = Object.fromEntries(formData);
+  
+  // إجبار الكود على استخدام المفتاح النظيف الخالي من المسافات
+  object.access_key = CLEAN_ACCESS_KEY;
+  const json = JSON.stringify(object);
 
-    fetch(pricingForm.action, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: json
-    })
-    .then(async (response) => {
-      let res = await response.json();
-      if (response.status === 200) {
-        pricingSubmitBtn.textContent = 'Submit Request';
-        pricingSubmitBtn.disabled = false;
-        pricingSuccessMsg.classList.remove('hidden');
-        pricingSuccessMsg.classList.add('flex');
-        pricingForm.reset();
-        setTimeout(() => pricingSuccessMsg.classList.add('hidden'), 7000);
-      } else {
-        alert(res.message || 'Something went wrong. Please try again.');
-        pricingSubmitBtn.disabled = false;
-        pricingSubmitBtn.textContent = 'Submit Request';
-      }
-    })
-    .catch(() => {
-      alert('Network error. Please check your internet connection.');
+  fetch(pricingForm.action, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: json
+  })
+  .then(async (response) => {
+    let res = await response.json();
+    if (response.status === 200 || res.success) {
+      pricingSubmitBtn.textContent = 'Submit Request';
+      pricingSubmitBtn.disabled = false;
+      pricingSuccessMsg.classList.remove('hidden');
+      pricingSuccessMsg.classList.add('flex');
+      pricingForm.reset();
+      setTimeout(() => pricingSuccessMsg.classList.add('hidden'), 7000);
+    } else {
+      alert(res.message || 'Something went wrong. Please try again.');
       pricingSubmitBtn.disabled = false;
       pricingSubmitBtn.textContent = 'Submit Request';
-    });
+    }
+  })
+  .catch(() => {
+    alert('Network error. Please check your internet connection.');
+    pricingSubmitBtn.disabled = false;
+    pricingSubmitBtn.textContent = 'Submit Request';
   });
+});
 </script>
 
 </body>
