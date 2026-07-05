@@ -6,14 +6,10 @@
 <title>Ontario Grow Media | Web Design & Digital Marketing for Local Businesses</title>
 <meta name="description" content="Ontario Grow Media designs and builds websites for retail shops and small businesses, and manages their social media presence — real consultation, not generic templates.">
 
-<!-- ===================== FONTS =====================
-     Sora              -> Display / headings (bold geometric sans)
-     Plus Jakarta Sans  -> Body text & UI (clean, highly readable) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-<!-- ===================== TAILWIND (CDN) ===================== -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -35,56 +31,27 @@
 </script>
 
 <style>
-  /* ---------- Base ---------- */
   html { scroll-behavior: smooth; }
   body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F6F9F7; color: #0F1E2E; }
   h1, h2, h3, .font-display { font-family: 'Sora', sans-serif; }
-
-  /* Offset anchored sections so the sticky header doesn't cover the heading */
   section[id] { scroll-margin-top: 88px; }
-
-  /* ---------- Subtle dotted texture for dark sections (signature backdrop) ---------- */
-  .dot-grid {
-    background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
-    background-size: 22px 22px;
-  }
-
-  /* ---------- Scroll reveal ---------- */
+  .dot-grid { background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 22px 22px; }
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-  /* ---------- Growth line signature: draw-in animation ---------- */
-  .growth-path {
-    stroke-dasharray: 600;
-    stroke-dashoffset: 600;
-    animation: draw 2.4s ease forwards .3s;
-  }
+  .growth-path { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 2.4s ease forwards .3s; }
   .growth-node { opacity: 0; animation: popIn .5s ease forwards; }
   @keyframes draw { to { stroke-dashoffset: 0; } }
   @keyframes popIn { to { opacity: 1; } }
-
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
     .growth-path { stroke-dashoffset: 0; animation: none; }
     .growth-node { opacity: 1; animation: none; }
     html { scroll-behavior: auto; }
   }
-
-  /* ---------- Nav link underline ---------- */
   .nav-link { position: relative; }
-  .nav-link::after {
-    content: '';
-    position: absolute; left: 0; bottom: -6px; height: 2px; width: 0%;
-    background: #2DD4A0; transition: width .3s ease;
-  }
+  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0%; background: #2DD4A0; transition: width .3s ease; }
   .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-
-  /* ---------- Custom focus ring (accessibility) ---------- */
-  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-    outline: 2px solid #2DD4A0; outline-offset: 2px; border-radius: 6px;
-  }
-
-  /* ---------- Mobile menu ---------- */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid #2DD4A0; outline-offset: 2px; border-radius: 6px; }
   #mobile-menu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
   #mobile-menu.open { max-height: 420px; }
 </style>
@@ -92,39 +59,26 @@
 
 <body class="antialiased">
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
 <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-navy-900/80 backdrop-blur-md border-b border-white/5">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
     <div class="flex items-center justify-between h-20">
-
-      <!-- Logo -->
       <a href="#hero" class="flex items-center gap-2 shrink-0">
         <span class="font-display font-extrabold text-xl sm:text-2xl text-white">Ontario<span class="text-mint">Grow</span></span>
         <span class="hidden sm:inline-block text-[11px] text-white/40 border border-white/15 rounded-full px-2 py-0.5 font-body">Media</span>
       </a>
-
-      <!-- Desktop nav -->
       <nav class="hidden md:flex items-center gap-9">
         <a href="#services" class="nav-link text-sm text-white/80 hover:text-white transition">Services</a>
         <a href="#approach" class="nav-link text-sm text-white/80 hover:text-white transition">Our Approach</a>
         <a href="#pricing" class="nav-link text-sm text-white/80 hover:text-white transition">Pricing</a>
         <a href="#contact" class="nav-link text-sm text-white/80 hover:text-white transition">Contact</a>
       </nav>
-
-      <!-- CTA + mobile toggle -->
       <div class="flex items-center gap-3">
-        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-mint hover:bg-mint-dark text-navy-950 font-bold text-sm px-5 py-2.5 rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-mint/20">
-          Get Started
-        </a>
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-mint hover:bg-mint-dark text-navy-950 font-bold text-sm px-5 py-2.5 rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-mint/20">Get Started</a>
         <button id="menu-btn" aria-label="Open menu" aria-expanded="false" class="md:hidden text-white p-2">
           <svg id="icon-burger" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
       </div>
     </div>
-
-    <!-- Mobile nav -->
     <div id="mobile-menu" class="md:hidden">
       <nav class="flex flex-col gap-1 pb-5 text-white/85">
         <a href="#services" class="mobile-link py-2.5 border-b border-white/5">Services</a>
@@ -137,55 +91,30 @@
   </div>
 </header>
 
-<!-- =========================================================
-     HERO
-========================================================= -->
 <section id="hero" class="relative bg-navy-900 dot-grid overflow-hidden pt-40 pb-28 sm:pt-44 sm:pb-36">
-  <!-- Ambient glow -->
   <div class="absolute -top-32 -right-32 w-96 h-96 bg-mint/10 rounded-full blur-3xl"></div>
   <div class="absolute bottom-0 left-0 w-72 h-72 bg-mint/5 rounded-full blur-3xl"></div>
-
   <div class="relative max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
-
-    <!-- Text -->
     <div class="reveal">
-      <span class="inline-flex items-center gap-2 text-mint text-xs font-bold tracking-wide bg-mint/10 border border-mint/25 rounded-full px-4 py-1.5 mb-6">
-        Digital Agency Based in Ontario
-      </span>
-      <h1 class="font-display font-extrabold text-white text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.2] mb-6">
-        We turn your local business into a brand that gets
-        <span class="text-mint">noticed, chosen, and grows.</span>
-      </h1>
-      <p class="text-white/65 text-lg leading-loose max-w-lg mb-9">
-        Ontario Grow Media is your partner for web design and digital presence management for retail shops, local businesses, and SMEs — no generic templates, just a real plan built around your identity and budget.
-      </p>
-
+      <span class="inline-flex items-center gap-2 text-mint text-xs font-bold tracking-wide bg-mint/10 border border-mint/25 rounded-full px-4 py-1.5 mb-6">Digital Agency Based in Ontario</span>
+      <h1 class="font-display font-extrabold text-white text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.2] mb-6">We turn your local business into a brand that gets <span class="text-mint">noticed, chosen, and grows.</span></h1>
+      <p class="text-white/65 text-lg leading-loose max-w-lg mb-9">Ontario Grow Media is your partner for web design and digital presence management for retail shops, local businesses, and SMEs — no generic templates, just a real plan built around your identity and budget.</p>
       <div class="flex flex-wrap items-center gap-4 mb-10">
-        <a href="#contact" class="inline-flex items-center gap-2 bg-mint hover:bg-mint-dark text-navy-950 font-bold px-7 py-3.5 rounded-full transition-all duration-300 hover:scale-105 shadow-xl shadow-mint/20">
-          Start Your Project
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l7-7-7-7"/></svg>
-        </a>
-        <a href="#services" class="inline-flex items-center gap-2 text-white/85 hover:text-white border border-white/20 hover:border-white/40 px-7 py-3.5 rounded-full transition">
-          See Our Services
-        </a>
+        <a href="#contact" class="inline-flex items-center gap-2 bg-mint hover:bg-mint-dark text-navy-950 font-bold px-7 py-3.5 rounded-full transition-all duration-300 hover:scale-105 shadow-xl shadow-mint/20">Start Your Project</a>
+        <a href="#services" class="inline-flex items-center gap-2 text-white/85 hover:text-white border border-white/20 hover:border-white/40 px-7 py-3.5 rounded-full transition">See Our Services</a>
       </div>
-
-      <!-- Value strip -->
       <div class="flex flex-wrap gap-x-8 gap-y-3 text-white/60 text-sm border-t border-white/10 pt-6">
         <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-mint"></span> A real consultative approach</span>
         <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-mint"></span> Fast delivery, ongoing support</span>
         <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-mint"></span> Solutions that fit your budget</span>
       </div>
     </div>
-
-    <!-- Signature growth-line visual -->
     <div class="reveal hidden lg:flex justify-center" style="transition-delay:.15s">
       <svg viewBox="0 0 360 320" class="w-full max-w-sm">
         <line x1="20" y1="280" x2="340" y2="280" stroke="white" stroke-opacity="0.08" stroke-width="1"/>
         <line x1="20" y1="200" x2="340" y2="200" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
         <line x1="20" y1="120" x2="340" y2="120" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
-        <path class="growth-path" d="M30 270 L100 230 L160 250 L220 150 L280 170 L330 60"
-              fill="none" stroke="#2DD4A0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="growth-path" d="M30 270 L100 230 L160 250 L220 150 L280 170 L330 60" fill="none" stroke="#2DD4A0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
         <circle class="growth-node" style="animation-delay:1.6s" cx="100" cy="230" r="5" fill="#0B1C2C" stroke="#2DD4A0" stroke-width="2.5"/>
         <circle class="growth-node" style="animation-delay:1.8s" cx="220" cy="150" r="5" fill="#0B1C2C" stroke="#2DD4A0" stroke-width="2.5"/>
         <circle class="growth-node" style="animation-delay:2.1s" cx="330" cy="60" r="7" fill="#2DD4A0"/>
@@ -194,57 +123,37 @@
   </div>
 </section>
 
-<!-- =========================================================
-     SERVICES
-========================================================= -->
 <section id="services" class="bg-paper py-24 sm:py-32">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
-
     <div class="reveal max-w-2xl mb-16">
       <span class="text-mint-dark font-bold text-sm">Our Services</span>
       <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-ink mt-3 mb-4">Everything your business needs to show up and grow online</h2>
       <p class="text-slate-500 text-lg leading-loose">Two core services, done with real depth and focus — not a long list of surface-level offerings.</p>
     </div>
-
     <div class="grid md:grid-cols-2 gap-7">
-
-      <!-- Service 1: Web Design -->
       <div class="reveal group relative bg-white border border-ink/5 rounded-3xl p-9 sm:p-10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-navy-900/10">
-        <div class="absolute top-9 right-9 w-2 h-2 rounded-full bg-mint opacity-0 group-hover:opacity-100 transition"></div>
-        <div class="w-14 h-14 rounded-2xl bg-navy-900 flex items-center justify-center mb-7 transition-transform group-hover:scale-105">
+        <div class="w-14 h-14 rounded-2xl bg-navy-900 flex items-center justify-center mb-7">
           <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#2DD4A0" stroke-width="1.7">
-            <rect x="3" y="4.5" width="18" height="15" rx="2.2"/>
-            <line x1="3" y1="8.3" x2="21" y2="8.3"/>
-            <circle cx="6" cy="6.4" r=".6" fill="#2DD4A0" stroke="none"/>
-            <path d="M6.5 16l3-3.2 2.4 2 4.6-5.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="3" y="4.5" width="18" height="15" rx="2.2"/><line x1="3" y1="8.3" x2="21" y2="8.3"/><path d="M6.5 16l3-3.2 2.4 2 4.6-5.3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <h3 class="font-display font-extrabold text-2xl text-ink mb-3">Web Design & Development</h3>
-        <p class="text-slate-500 leading-loose mb-6">
-          Websites built specifically for retail shops, local businesses, and SMEs — fast performance and a clear
-          user experience that turns visitors into customers.
-        </p>
+        <p class="text-slate-500 leading-loose mb-6">Websites built specifically for retail shops, local businesses, and SMEs — fast performance and a clear user experience that turns visitors into customers.</p>
         <ul class="space-y-2.5 text-sm text-ink/75">
           <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark"></span>Business sites & online stores</li>
           <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark"></span>Responsive design for every device</li>
           <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark"></span>Foundational SEO optimization</li>
         </ul>
       </div>
-
-      <!-- Service 2: Social Media & Marketing -->
       <div class="reveal group relative bg-white border border-ink/5 rounded-3xl p-9 sm:p-10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-navy-900/10" style="transition-delay:.1s">
-        <div class="absolute top-9 right-9 w-2 h-2 rounded-full bg-mint opacity-0 group-hover:opacity-100 transition"></div>
-        <div class="w-14 h-14 rounded-2xl bg-navy-900 flex items-center justify-center mb-7 transition-transform group-hover:scale-105">
+        <div class="w-14 h-14 rounded-2xl bg-navy-900 flex items-center justify-center mb-7">
           <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#2DD4A0" stroke-width="1.7">
             <path d="M5 5h14a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H10l-4 3v-3H5A1.5 1.5 0 0 1 3.5 14.5v-8A1.5 1.5 0 0 1 5 5Z" stroke-linejoin="round"/>
             <path d="M7.5 9.5l2.2 2.2L13 8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <h3 class="font-display font-extrabold text-2xl text-ink mb-3">Social Media Management & Digital Marketing</h3>
-        <p class="text-slate-500 leading-loose mb-6">
-          We build your presence across social platforms and get your message in front of the right audience —
-          with thoughtful content and campaigns measured by real results, not guesswork.
-        </p>
+        <p class="text-slate-500 leading-loose mb-6">We build your presence across social platforms and get your message in front of the right audience — with thoughtful content and campaigns measured by real results, not guesswork.</p>
         <ul class="space-y-2.5 text-sm text-ink/75">
           <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark"></span>Content design & monthly posting plan</li>
           <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark"></span>Paid campaign management & optimization</li>
@@ -255,22 +164,13 @@
   </div>
 </section>
 
-<!-- =========================================================
-     APPROACH / COMPETITIVE EDGE
-========================================================= -->
 <section id="approach" class="bg-navy-900 dot-grid py-24 sm:py-32 relative overflow-hidden">
-  <div class="absolute top-0 left-0 w-80 h-80 bg-mint/5 rounded-full blur-3xl"></div>
-
-  <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
     <div class="reveal max-w-2xl mb-16">
       <span class="text-mint font-bold text-sm">Our Approach</span>
       <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-3 mb-5">We don't sell generic templates.</h2>
-      <p class="text-white/65 text-lg leading-loose">
-        We sit down with you, listen to what you actually need, and help you choose exactly what fits your identity and budget — step by step, not a one-size-fits-all package sold to every client.
-      </p>
+      <p class="text-white/65 text-lg leading-loose">We sit down with you, listen to what you actually need, and help you choose exactly what fits your identity and budget — step by step, not a one-size-fits-all package sold to every client.</p>
     </div>
-
-    <!-- 3-step real process -->
     <div class="grid md:grid-cols-3 gap-8 mb-20">
       <div class="reveal">
         <span class="font-display text-mint/40 text-5xl font-extrabold">01</span>
@@ -288,550 +188,171 @@
         <p class="text-white/55 leading-loose">We build, launch, and keep tracking results with you. We don't disappear after the invoice.</p>
       </div>
     </div>
-
-    <!-- Compare panel -->
-    <div class="reveal grid sm:grid-cols-2 gap-5 rounded-3xl overflow-hidden border border-white/10">
-      <div class="bg-white/[0.04] p-8">
-        <h4 class="text-white/50 font-bold mb-5">The Generic Approach</h4>
-        <ul class="space-y-3.5 text-white/45">
-          <li class="flex items-start gap-3"><span class="text-rose-400 mt-0.5">✕</span>Repetitive design that looks like dozens of other sites</li>
-          <li class="flex items-start gap-3"><span class="text-rose-400 mt-0.5">✕</span>One solution sold to every client</li>
-          <li class="flex items-start gap-3"><span class="text-rose-400 mt-0.5">✕</span>No real support after delivery</li>
-        </ul>
-      </div>
-      <div class="bg-mint/[0.08] p-8">
-        <h4 class="text-mint font-bold mb-5">The Ontario Grow Media Way</h4>
-        <ul class="space-y-3.5 text-white/85">
-          <li class="flex items-start gap-3"><span class="text-mint mt-0.5">✓</span>A visual identity designed specifically for your business</li>
-          <li class="flex items-start gap-3"><span class="text-mint mt-0.5">✓</span>Real consultation and thoughtful choices made with you</li>
-          <li class="flex items-start gap-3"><span class="text-mint mt-0.5">✓</span>Ongoing support after launch</li>
-        </ul>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- =========================================================
-     PACKAGES & PRICING
-========================================================= -->
 <section id="pricing" class="bg-paper py-24 sm:py-32">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
-
-    <!-- Heading -->
     <div class="reveal max-w-3xl mb-6">
       <span class="text-mint-dark font-bold text-sm">Packages & Pricing</span>
       <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-ink mt-3 mb-5">Flexible Growth Packages Built for Canadian Businesses</h2>
-      <p class="text-slate-500 text-lg leading-loose">
-        Pricing below starts from the listed amounts. Every final proposal is customized to your business
-        goals, project scope, competitive landscape, and marketing needs — so you only pay for what actually
-        moves your business forward.
-      </p>
+      <p class="text-slate-500 text-lg leading-loose">Pricing below starts from the listed amounts. Every final proposal is customized to your business goals.</p>
     </div>
-
-    <!-- Monthly package cards -->
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
-
-      <!-- Starter Growth -->
-      <div class="reveal group relative bg-white border border-ink/5 rounded-3xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-navy-900/10">
+      <div class="reveal bg-white border border-ink/5 rounded-3xl p-8 flex flex-col">
         <h3 class="font-display font-extrabold text-xl text-ink mb-1.5">Starter Growth</h3>
-        <p class="text-slate-500 text-sm leading-relaxed mb-5">A solid foundation to establish your online presence and start attracting local customers.</p>
-        <div class="mb-6">
-          <span class="text-xs text-slate-400 font-bold uppercase tracking-wide">Starting from</span>
-          <div class="flex items-baseline gap-1.5 mt-1">
-            <span class="font-display font-extrabold text-3xl text-ink">$899</span>
-            <span class="text-slate-400 text-sm font-medium">CAD/month</span>
-          </div>
-        </div>
-        <ul class="space-y-3 text-sm text-ink/75 mb-8 flex-1">
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Social media management (2 platforms)</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>8 content posts per month</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Google Business Profile maintenance</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Basic on-page SEO upkeep</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Monthly performance report</li>
-        </ul>
-        <a href="#pricing-form" class="w-full inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-bold text-sm px-6 py-3.5 rounded-full transition-all duration-300 hover:scale-[1.02]">
-          Request a Custom Proposal
-        </a>
+        <div class="flex items-baseline gap-1.5 my-4"><span class="font-display font-extrabold text-3xl text-ink">$899</span><span class="text-slate-400 text-sm">CAD/mo</span></div>
+        <a href="#pricing-form" class="w-full text-center bg-navy-900 text-white font-bold text-sm py-3 rounded-full mt-auto">Choose Starter</a>
       </div>
-
-      <!-- Business Growth — Most Popular -->
-      <div class="reveal group relative bg-navy-900 dot-grid border-2 border-mint rounded-3xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-2 shadow-2xl shadow-navy-900/20 lg:scale-105" style="transition-delay:.1s">
-        <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-mint text-navy-950 text-xs font-extrabold tracking-wide uppercase px-4 py-1.5 rounded-full shadow-lg shadow-mint/30">Most Popular</span>
-        <h3 class="font-display font-extrabold text-xl text-white mb-1.5 mt-2">Business Growth</h3>
-        <p class="text-white/60 text-sm leading-relaxed mb-5">Our most recommended package — consistent content, real SEO progress, and hands-on strategy.</p>
-        <div class="mb-6">
-          <span class="text-xs text-mint/70 font-bold uppercase tracking-wide">Starting from</span>
-          <div class="flex items-baseline gap-1.5 mt-1">
-            <span class="font-display font-extrabold text-3xl text-white">$1,799</span>
-            <span class="text-white/50 text-sm font-medium">CAD/month</span>
-          </div>
-        </div>
-        <ul class="space-y-3 text-sm text-white/80 mb-8 flex-1">
-          <li class="flex items-start gap-2.5"><span class="text-mint mt-0.5">✓</span>Social media management (3 platforms)</li>
-          <li class="flex items-start gap-2.5"><span class="text-mint mt-0.5">✓</span>16 content posts + stories per month</li>
-          <li class="flex items-start gap-2.5"><span class="text-mint mt-0.5">✓</span>Google Business Profile optimization</li>
-          <li class="flex items-start gap-2.5"><span class="text-mint mt-0.5">✓</span>On-page SEO & keyword tracking</li>
-          <li class="flex items-start gap-2.5"><span class="text-mint mt-0.5">✓</span>Monthly strategy call</li>
-          <li class="flex items-start gap-2.5"><span class="text-mint mt-0.5">✓</span>Priority email & phone support</li>
-        </ul>
-        <a href="#pricing-form" class="w-full inline-flex items-center justify-center gap-2 bg-mint hover:bg-mint-dark text-navy-950 font-bold text-sm px-6 py-3.5 rounded-full transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-mint/20">
-          Request a Custom Proposal
-        </a>
+      <div class="reveal bg-navy-900 border-2 border-mint rounded-3xl p-8 flex flex-col relative lg:scale-105">
+        <h3 class="font-display font-extrabold text-xl text-white mb-1.5">Business Growth</h3>
+        <div class="flex items-baseline gap-1.5 my-4"><span class="font-display font-extrabold text-3xl text-white">$1,799</span><span class="text-white/50 text-sm">CAD/mo</span></div>
+        <a href="#pricing-form" class="w-full text-center bg-mint text-navy-950 font-bold text-sm py-3 rounded-full mt-auto">Choose Business</a>
       </div>
-
-      <!-- Premium Growth -->
-      <div class="reveal group relative bg-white border border-ink/5 rounded-3xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-navy-900/10" style="transition-delay:.2s">
+      <div class="reveal bg-white border border-ink/5 rounded-3xl p-8 flex flex-col">
         <h3 class="font-display font-extrabold text-xl text-ink mb-1.5">Premium Growth</h3>
-        <p class="text-slate-500 text-sm leading-relaxed mb-5">Built for businesses ready to scale with paid advertising and deeper content production.</p>
-        <div class="mb-6">
-          <span class="text-xs text-slate-400 font-bold uppercase tracking-wide">Starting from</span>
-          <div class="flex items-baseline gap-1.5 mt-1">
-            <span class="font-display font-extrabold text-3xl text-ink">$3,299</span>
-            <span class="text-slate-400 text-sm font-medium">CAD/month</span>
-          </div>
-        </div>
-        <ul class="space-y-3 text-sm text-ink/75 mb-8 flex-1">
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Social media management (4+ platforms)</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>24+ posts/month incl. reels & video content</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Google & Meta paid ad campaign management</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Advanced SEO & local search optimization</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Bi-weekly strategy calls</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Dedicated account manager</li>
-        </ul>
-        <a href="#pricing-form" class="w-full inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-bold text-sm px-6 py-3.5 rounded-full transition-all duration-300 hover:scale-[1.02]">
-          Request a Custom Proposal
-        </a>
+        <div class="flex items-baseline gap-1.5 my-4"><span class="font-display font-extrabold text-3xl text-ink">$3,299</span><span class="text-slate-400 text-sm">CAD/mo</span></div>
+        <a href="#pricing-form" class="w-full text-center bg-navy-900 text-white font-bold text-sm py-3 rounded-full mt-auto">Choose Premium</a>
       </div>
-
-      <!-- Enterprise Growth -->
-      <div class="reveal group relative bg-white border border-ink/5 rounded-3xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-navy-900/10" style="transition-delay:.3s">
+      <div class="reveal bg-white border border-ink/5 rounded-3xl p-8 flex flex-col">
         <h3 class="font-display font-extrabold text-xl text-ink mb-1.5">Enterprise Growth</h3>
-        <p class="text-slate-500 text-sm leading-relaxed mb-5">Full-scale digital growth management for established businesses with multiple channels.</p>
-        <div class="mb-6">
-          <span class="text-xs text-slate-400 font-bold uppercase tracking-wide">Starting from</span>
-          <div class="flex items-baseline gap-1.5 mt-1">
-            <span class="font-display font-extrabold text-3xl text-ink">$5,999</span>
-            <span class="text-slate-400 text-sm font-medium">CAD/month</span>
-          </div>
-        </div>
-        <ul class="space-y-3 text-sm text-ink/75 mb-8 flex-1">
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Complete digital marketing management, all channels</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Unlimited content production</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Multi-platform paid advertising management</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Advanced SEO, CRO & conversion tracking</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Weekly strategy calls & reporting</li>
-          <li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-mint-dark mt-1.5 shrink-0"></span>Dedicated account team & priority support</li>
-        </ul>
-        <a href="#pricing-form" class="w-full inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-bold text-sm px-6 py-3.5 rounded-full transition-all duration-300 hover:scale-[1.02]">
-          Request a Custom Proposal
-        </a>
+        <div class="flex items-baseline gap-1.5 my-4"><span class="font-display font-extrabold text-3xl text-ink">$5,999</span><span class="text-slate-400 text-sm">CAD/mo</span></div>
+        <a href="#pricing-form" class="w-full text-center bg-navy-900 text-white font-bold text-sm py-3 rounded-full mt-auto">Choose Enterprise</a>
       </div>
-    </div>
-
-    <!-- One-Time Services -->
-    <div class="reveal mt-24">
-      <span class="text-mint-dark font-bold text-sm">One-Time Services</span>
-      <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-ink mt-3 mb-8">Standalone Projects & Design Services</h3>
-
-      <div class="bg-white border border-ink/5 rounded-3xl overflow-hidden shadow-sm">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse min-w-[560px]">
-            <thead>
-              <tr class="bg-navy-900">
-                <th class="font-display font-bold text-white text-sm px-6 sm:px-8 py-5">Service</th>
-                <th class="font-display font-bold text-white text-sm px-6 sm:px-8 py-5 text-right">Starting Price (CAD)</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-ink/5">
-              <tr class="hover:bg-paper transition">
-                <td class="px-6 sm:px-8 py-4.5 text-ink font-medium text-sm">Logo Design</td>
-                <td class="px-6 sm:px-8 py-4.5 text-ink/75 text-sm text-right whitespace-nowrap">$399</td>
-              </tr>
-              <tr class="hover:bg-paper transition">
-                <td class="px-6 sm:px-8 py-4.5 text-ink font-medium text-sm">Brand Identity Package</td>
-                <td class="px-6 sm:px-8 py-4.5 text-ink/75 text-sm text-right whitespace-nowrap">$999</td>
-              </tr>
-              <tr class="hover:bg-paper transition">
-                <td class="px-6 sm:px-8 py-4.5 text-ink font-medium text-sm">Landing Page Design & Development</td>
-                <td class="px-6 sm:px-8 py-4.5 text-ink/75 text-sm text-right whitespace-nowrap">$899</td>
-              </tr>
-              <tr class="hover:bg-paper transition">
-                <td class="px-6 sm:px-8 py-4.5 text-ink font-medium text-sm">Business Website (up to 5 Pages)</td>
-                <td class="px-6 sm:px-8 py-4.5 text-ink/75 text-sm text-right whitespace-nowrap">$2,499</td>
-              </tr>
-              <tr class="hover:bg-paper transition">
-                <td class="px-6 sm:px-8 py-4.5 text-ink font-medium text-sm">Custom Business Website</td>
-                <td class="px-6 sm:px-8 py-4.5 text-ink/75 text-sm text-right whitespace-nowrap">$3,999</td>
-              </tr>
-              <tr class="hover:bg-paper transition">
-                <td class="px-6 sm:px-8 py-4.5 text-ink font-medium text-sm">E-commerce Website</td>
-                <td class="px-6 sm:px-8 py-4.5 text-ink/75 text-sm text-right whitespace-nowrap">$5,999</td>
-              </tr>
-              <tr class="hover:bg-paper transition">
-                <td class="px-6 sm:px-8 py-4.5 text-ink font-medium text-sm">Google Business Profile Setup & Optimization</td>
-                <td class="px-6 sm:px-8 py-4.5 text-ink/75 text-sm text-right whitespace-nowrap">$349</td>
-              </tr>
-              <tr class="hover:bg-paper transition">
-                <td class="px-6 sm:px-8 py-4.5 text-ink font-medium text-sm">SEO Audit</td>
-                <td class="px-6 sm:px-8 py-4.5 text-ink/75 text-sm text-right whitespace-nowrap">$599</td>
-              </tr>
-              <tr class="hover:bg-paper transition">
-                <td class="px-6 sm:px-8 py-4.5 text-ink font-medium text-sm">Local SEO Setup</td>
-                <td class="px-6 sm:px-8 py-4.5 text-ink/75 text-sm text-right whitespace-nowrap">$899</td>
-              </tr>
-              <tr class="hover:bg-paper transition">
-                <td class="px-6 sm:px-8 py-4.5 text-ink font-medium text-sm">CRO Audit</td>
-                <td class="px-6 sm:px-8 py-4.5 text-ink/75 text-sm text-right whitespace-nowrap">$799</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Pricing note -->
-    <div class="reveal mt-10 bg-mint/[0.07] border border-mint/20 rounded-2xl px-6 sm:px-8 py-5">
-      <p class="text-ink/70 text-sm leading-relaxed">
-        <span class="font-bold text-ink">A note on pricing:</span> Starting prices are provided as a general guide.
-        Every proposal is customized based on your business goals, project scope, competition, and marketing
-        requirements. Advertising budgets are billed separately.
-      </p>
     </div>
   </div>
 </section>
 
-<!-- =========================================================
-     PRICING LEAD FORM
-========================================================= -->
 <section id="pricing-form" class="bg-navy-900 dot-grid py-24 sm:py-32 relative overflow-hidden">
   <div class="absolute -top-32 -left-32 w-96 h-96 bg-mint/10 rounded-full blur-3xl"></div>
-
   <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
     <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-6 rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-950/30">
-
-      <!-- Info panel -->
+      
       <div class="reveal bg-navy-950 p-10 sm:p-12 flex flex-col justify-between">
         <div>
           <span class="text-mint font-bold text-sm">Request a Proposal</span>
           <h2 class="font-display font-extrabold text-3xl text-white mt-3 mb-5">Prefer to submit your details online?</h2>
-          <p class="text-white/60 leading-loose">
-            Fill out the form and our team will review your information and put together a proposal tailored
-            to your business — no obligation, no generic quotes.
-          </p>
-        </div>
-        <div class="mt-10 space-y-4 text-white/75 text-sm">
-          <span class="block text-white/40 font-bold text-xs uppercase tracking-wide mb-3">Ontario Grow Media</span>
-          <a href="mailto:business@ontgmedia.com" class="flex items-center gap-3 hover:text-mint transition">
-            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6.5h18v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11Zm0 0 9 6.5 9-6.5"/></svg>
-            business@ontgmedia.com
-          </a>
-          <a href="tel:+16479784993" class="flex items-center gap-3 hover:text-mint transition">
-            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5.5c0-1 .8-1.5 1.5-1.5h2c.6 0 1.1.4 1.3 1l1 2.7c.2.5 0 1.1-.4 1.4l-1.4 1.2a12 12 0 0 0 5.7 5.7l1.2-1.4c.3-.4.9-.6 1.4-.4l2.7 1c.6.2 1 .7 1 1.3v2c0 .7-.5 1.5-1.5 1.5C10.5 20.5 3.5 13.5 4 5.5Z"/></svg>
-            +1 647-978-4993
-          </a>
-          <div class="flex items-center gap-3">
-            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
-            Ontario, Canada
-          </div>
+          <p class="text-white/60 leading-loose">Fill out the form and our team will review your information and put together a proposal tailored to your business.</p>
         </div>
       </div>
 
-      <!-- Form -->
-      <div class="reveal bg-white p-10 sm:p-12" style="transition-delay:.1s">
-        <!--
-          NOTE FOR DEPLOYMENT:
-          This is a static GitHub Pages site, so the form has no backend by
-          default. To receive real submissions, connect a free form service
-          such as Formspree or EmailJS — set the <form> "action" attribute to
-          your endpoint (e.g. action="https://formspree.io/f/your-id") and
-          remove/adjust the preventDefault() logic in the script below.
-        -->
-        <form id="pricing-inquiry-form" class="space-y-5">
+      <div class="reveal bg-white p-10 sm:p-12">
+        <form id="pricing-inquiry-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
+          <input type="hidden" name="access_key" value="ea7bec23-c08e-44a3-9ed2-2c113dccf29e">
+          <input type="hidden" name="from_name" value="Ontario Grow - Pricing Form">
+          
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label for="p-name" class="block text-sm font-bold text-ink mb-2">Full Name</label>
-              <input id="p-name" name="name" type="text" required placeholder="Your full name"
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm placeholder:text-slate-400 focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
+              <input id="p-name" name="name" type="text" required placeholder="Your full name" class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
             </div>
             <div>
               <label for="p-business" class="block text-sm font-bold text-ink mb-2">Business Name</label>
-              <input id="p-business" name="business" type="text" required placeholder="Your business name"
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm placeholder:text-slate-400 focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
+              <input id="p-business" name="business" type="text" required placeholder="Your business name" class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
             </div>
           </div>
-
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label for="p-email" class="block text-sm font-bold text-ink mb-2">Email Address</label>
-              <input id="p-email" name="email" type="email" required placeholder="you@email.com"
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm placeholder:text-slate-400 focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
+              <input id="p-email" name="email" type="email" required placeholder="you@email.com" class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
             </div>
             <div>
               <label for="p-phone" class="block text-sm font-bold text-ink mb-2">Phone Number</label>
-              <input id="p-phone" name="phone" type="tel" required placeholder="(647) 000-0000"
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm placeholder:text-slate-400 focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
+              <input id="p-phone" name="phone" type="tel" required placeholder="(647) 000-0000" class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
             </div>
           </div>
-
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label for="p-website" class="block text-sm font-bold text-ink mb-2">Website URL <span class="text-slate-400 font-medium">(optional)</span></label>
-              <input id="p-website" name="website" type="url" placeholder="https://yourbusiness.com"
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm placeholder:text-slate-400 focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
-            </div>
-            <div>
-              <label for="p-location" class="block text-sm font-bold text-ink mb-2">Business Location</label>
-              <input id="p-location" name="location" type="text" required placeholder="City, Province"
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm placeholder:text-slate-400 focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
-            </div>
-          </div>
-
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label for="p-service" class="block text-sm font-bold text-ink mb-2">Service Interested In</label>
-              <select id="p-service" name="service" required
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
+              <select id="p-service" name="service" required class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
                 <option value="" disabled selected>Choose an option</option>
-                <option value="monthly-package">Monthly Marketing Package</option>
                 <option value="website-design">Website Design</option>
-                <option value="seo">SEO</option>
                 <option value="social-media">Social Media Management</option>
-                <option value="ads">Google Ads / Meta Ads</option>
-                <option value="branding">Branding</option>
-                <option value="not-sure">Not Sure Yet</option>
               </select>
             </div>
             <div>
               <label for="p-budget" class="block text-sm font-bold text-ink mb-2">Monthly Marketing Budget</label>
-              <select id="p-budget" name="budget" required
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
+              <select id="p-budget" name="budget" required class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
                 <option value="" disabled selected>Choose an option</option>
                 <option value="under-1000">Under $1,000 CAD/month</option>
                 <option value="1000-2500">$1,000–$2,500 CAD/month</option>
-                <option value="2500-5000">$2,500–$5,000 CAD/month</option>
-                <option value="5000-plus">$5,000+ CAD/month</option>
               </select>
             </div>
           </div>
-
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label for="p-timeline" class="block text-sm font-bold text-ink mb-2">Project Timeline</label>
-              <select id="p-timeline" name="timeline" required
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
-                <option value="" disabled selected>Choose an option</option>
-                <option value="asap">ASAP</option>
-                <option value="2-4-weeks">Within 2–4 weeks</option>
-                <option value="1-3-months">Within 1–3 months</option>
-                <option value="researching">Just researching</option>
-              </select>
-            </div>
-            <div>
-              <label for="p-contact-method" class="block text-sm font-bold text-ink mb-2">Preferred Contact Method</label>
-              <select id="p-contact-method" name="contact_method" required
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
-                <option value="" disabled selected>Choose an option</option>
-                <option value="email">Email</option>
-                <option value="phone">Phone</option>
-                <option value="whatsapp">WhatsApp</option>
-              </select>
-            </div>
-          </div>
-
           <div>
             <label for="p-goals" class="block text-sm font-bold text-ink mb-2">Tell us about your goals</label>
-            <textarea id="p-goals" name="goals" required rows="4" placeholder="Tell us about your business and what you'd like to achieve..."
-              class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm placeholder:text-slate-400 focus:border-mint focus:ring-2 focus:ring-mint/20 transition resize-none"></textarea>
+            <textarea id="p-goals" name="goals" required rows="4" placeholder="Tell us about your business..." class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition resize-none"></textarea>
           </div>
-
-          <button type="submit" id="p-submit-btn"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-mint hover:bg-mint-dark text-navy-950 font-bold px-8 py-3.5 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-mint/20">
-            Submit Request
-          </button>
-
-          <p id="p-form-success" class="hidden items-center gap-2 text-mint-dark font-bold text-sm pt-1">
-            ✓ Thank you. Your request has been submitted successfully. Our team will review your information and contact you shortly.
-          </p>
+          <button type="submit" id="p-submit-btn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-mint hover:bg-mint-dark text-navy-950 font-bold px-8 py-3.5 rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-mint/20">Submit Request</button>
+          <p id="p-form-success" class="hidden items-center gap-2 text-mint-dark font-bold text-sm pt-1">✓ Thank you. Your request has been submitted successfully.</p>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =========================================================
-     CONTACT
-========================================================= -->
 <section id="contact" class="bg-paper py-24 sm:py-32">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
     <div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-6 rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-900/10">
-
-      <!-- Info panel -->
       <div class="reveal bg-navy-900 dot-grid p-10 sm:p-12 flex flex-col justify-between">
         <div>
           <span class="text-mint font-bold text-sm">Contact Us</span>
           <h2 class="font-display font-extrabold text-3xl text-white mt-3 mb-5">Ready to hear about your project</h2>
-          <p class="text-white/60 leading-loose">
-            Fill out the form and we'll get back to you with a clear plan within one business day — no commitment, and no canned proposals before we understand what you need.
-          </p>
-        </div>
-        <div class="mt-10 space-y-4 text-white/75 text-sm">
-          <a href="mailto:hello@ontgmedia.com" class="flex items-center gap-3 hover:text-mint transition">
-            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6.5h18v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11Zm0 0 9 6.5 9-6.5"/></svg>
-            hello@ontgmedia.com
-          </a>
-          <div class="flex items-center gap-3">
-            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
-            Ontario, Canada
-          </div>
+          <p class="text-white/60 leading-loose">Fill out the form and we'll get back to you with a clear plan within one business day.</p>
         </div>
       </div>
 
-      <!-- Form -->
-      <div class="reveal bg-white p-10 sm:p-12" style="transition-delay:.1s">
-        <!--
-          NOTE FOR DEPLOYMENT:
-          This is a static GitHub Pages site, so the form has no backend by default.
-          To receive real submissions, connect a free form service such as Formspree
-          or EmailJS — just set the <form> "action" attribute to your endpoint
-          (e.g. action="https://formspree.io/f/your-id") and remove/adjust the
-          preventDefault() logic in the script below, or follow that service's docs.
-        -->
-        <form id="inquiry-form" class="space-y-5">
+      <div class="reveal bg-white p-10 sm:p-12">
+        <form id="inquiry-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
+          <input type="hidden" name="access_key" value="ea7bec23-c08e-44a3-9ed2-2c113dccf29e">
+          <input type="hidden" name="from_name" value="Ontario Grow - Contact Form">
+
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label for="name" class="block text-sm font-bold text-ink mb-2">Full Name</label>
-              <input id="name" name="name" type="text" required placeholder="Your full name"
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm placeholder:text-slate-400 focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
+              <input id="name" name="name" type="text" required placeholder="Your full name" class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
             </div>
             <div>
               <label for="email" class="block text-sm font-bold text-ink mb-2">Email Address</label>
-              <input id="email" name="email" type="email" required placeholder="you@email.com"
-                class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm placeholder:text-slate-400 focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
+              <input id="email" name="email" type="email" required placeholder="you@email.com" class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
             </div>
           </div>
-
           <div>
             <label for="service" class="block text-sm font-bold text-ink mb-2">Service Needed</label>
-            <select id="service" name="service" required
-              class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
+            <select id="service" name="service" required class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition">
               <option value="" disabled selected>Choose the right service</option>
               <option value="web">Web Design & Development</option>
-              <option value="social">Social Media Management & Digital Marketing</option>
-              <option value="both">Both</option>
-              <option value="other">Something else</option>
+              <option value="social">Social Media Management</option>
             </select>
           </div>
-
           <div>
             <label for="message" class="block text-sm font-bold text-ink mb-2">Project Details</label>
-            <textarea id="message" name="message" required rows="4" placeholder="Tell us about your business and what you need..."
-              class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm placeholder:text-slate-400 focus:border-mint focus:ring-2 focus:ring-mint/20 transition resize-none"></textarea>
+            <textarea id="message" name="message" required rows="4" placeholder="Tell us what you need..." class="w-full bg-paper border border-ink/10 rounded-xl px-4 py-3 text-sm focus:border-mint focus:ring-2 focus:ring-mint/20 transition resize-none"></textarea>
           </div>
-
-          <button type="submit" id="submit-btn"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-bold px-8 py-3.5 rounded-xl transition-all duration-300 hover:scale-[1.02]">
-            Submit Request
-          </button>
-
-          <p id="form-success" class="hidden items-center gap-2 text-mint-dark font-bold text-sm pt-1">
-            ✓ Your request has been received — we'll be in touch soon.
-          </p>
+          <button type="submit" id="submit-btn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-bold px-8 py-3.5 rounded-xl transition-all duration-300 hover:scale-[1.02]">Submit Request</button>
+          <p id="form-success" class="hidden items-center gap-2 text-mint-dark font-bold text-sm pt-1">✓ Your request has been received — we'll be in touch soon.</p>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
 <footer class="bg-navy-950 border-t border-white/5 pt-16 pb-8">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="grid sm:grid-cols-[1.3fr_1fr_1fr] gap-10 mb-12">
-
-      <div>
-        <span class="font-display font-extrabold text-xl text-white">Ontario<span class="text-mint">Grow</span> <span class="text-white/40 text-base font-body font-normal">Media</span></span>
-        <p class="text-white/45 leading-loose mt-4 max-w-sm text-sm">
-          We help retail shops and small-to-medium businesses across Ontario build a real digital presence — websites, content, and continuous growth.
-        </p>
-      </div>
-
-      <div>
-        <h5 class="text-white font-bold mb-4 text-sm">Quick Links</h5>
-        <ul class="space-y-2.5 text-white/50 text-sm">
-          <li><a href="#services" class="hover:text-mint transition">Services</a></li>
-          <li><a href="#approach" class="hover:text-mint transition">Our Approach</a></li>
-          <li><a href="#pricing" class="hover:text-mint transition">Pricing</a></li>
-          <li><a href="#contact" class="hover:text-mint transition">Contact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h5 class="text-white font-bold mb-4 text-sm">Get in Touch</h5>
-        <ul class="space-y-2.5 text-white/50 text-sm mb-5">
-          <li>hello@ontgmedia.com</li>
-          <li>Ontario, Canada</li>
-        </ul>
-        <div class="flex gap-3">
-          <!-- Social icons: generic minimal glyphs (not brand logo art) -->
-          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:border-mint hover:bg-mint/10 transition">
-            <svg class="w-4 h-4" fill="none" stroke="white" stroke-width="1.6" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".6" fill="white" stroke="none"/></svg>
-          </a>
-          <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:border-mint hover:bg-mint/10 transition">
-            <svg class="w-4 h-4" fill="none" stroke="white" stroke-width="1.6" viewBox="0 0 24 24"><path d="M14 21v-7h2.4l.4-3H14V9c0-.9.3-1.5 1.6-1.5H17V5c-.4 0-1.4-.1-2.4-.1-2.4 0-3.8 1.4-3.8 4v2H8.5v3H11v7"/></svg>
-          </a>
-          <a href="#" aria-label="WhatsApp" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:border-mint hover:bg-mint/10 transition">
-            <svg class="w-4 h-4" fill="none" stroke="white" stroke-width="1.6" viewBox="0 0 24 24"><path d="M5 19l1.3-3.7A7.5 7.5 0 1 1 9.6 18L5 19Z"/><path d="M9 9.6c0 3 2.4 5.4 5.4 5.4" stroke-linecap="round"/></svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:border-mint hover:bg-mint/10 transition">
-            <svg class="w-4 h-4" fill="none" stroke="white" stroke-width="1.6" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><line x1="7.5" y1="10" x2="7.5" y2="16"/><circle cx="7.5" cy="7.3" r=".7" fill="white" stroke="none"/><path d="M11.2 16v-4c0-1.2.9-2 2-2s2 .8 2 2v4" stroke-linecap="round"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-white/35 text-xs">
-      <p>© 2026 Ontario Grow Media. All rights reserved.</p>
-      <p>OntGMedia.com</p>
-    </div>
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 text-center text-white/35 text-xs">
+    <p>© 2026 Ontario Grow Media. All rights reserved.</p>
   </div>
 </footer>
 
-<!-- =========================================================
-     SCRIPTS (vanilla JS — no frameworks, lightweight)
-========================================================= -->
 <script>
-  // ---------- Mobile menu toggle ----------
-  const menuBtn   = document.getElementById('menu-btn');
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   menuBtn.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.toggle('open');
     menuBtn.setAttribute('aria-expanded', isOpen);
   });
-  document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
 
-  // ---------- Header shadow/solid state on scroll ----------
-  const header = document.getElementById('site-header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('shadow-lg', window.scrollY > 12);
-    header.classList.toggle('shadow-navy-950/40', window.scrollY > 12);
-  });
-
-  // ---------- Active nav link on scroll ----------
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = ['services', 'approach', 'pricing', 'contact'].map(id => document.getElementById(id));
-  const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  sections.forEach(s => s && navObserver.observe(s));
-
-  // ---------- Scroll reveal animations ----------
+  // Scroll animations
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -842,50 +363,76 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // ---------- Contact form (client-side demo handling) ----------
+  // معالجة نموذج الاتصال الثاني عبر AJAX ليرسل لـ Web3Forms مباشرة دون مغادرة الصفحة
   const form = document.getElementById('inquiry-form');
   const submitBtn = document.getElementById('submit-btn');
   const successMsg = document.getElementById('form-success');
 
   form.addEventListener('submit', (e) => {
-    e.preventDefault(); // remove this line once a real form endpoint (e.g. Formspree) is connected
-    if (!form.checkValidity()) return;
-
+    e.preventDefault();
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
-    // Simulated submission delay — replace with a real fetch() call to your form service
-    setTimeout(() => {
-      submitBtn.textContent = 'Submit Request';
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        submitBtn.textContent = 'Submit Request';
+        submitBtn.disabled = false;
+        successMsg.classList.remove('hidden');
+        successMsg.classList.add('flex');
+        form.reset();
+        setTimeout(() => successMsg.classList.add('hidden'), 6000);
+      } else {
+        alert('Something went wrong. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Request';
+      }
+    })
+    .catch(() => {
+      alert('Network error.');
       submitBtn.disabled = false;
-      successMsg.classList.remove('hidden');
-      successMsg.classList.add('flex');
-      form.reset();
-      setTimeout(() => successMsg.classList.add('hidden'), 6000);
-    }, 700);
+      submitBtn.textContent = 'Submit Request';
+    });
   });
 
-  // ---------- Pricing lead form (client-side demo handling) ----------
+  // معالجة نموذج طلب السعر الأول عبر AJAX ليرسل لـ Web3Forms مباشرة دون مغادرة الصفحة
   const pricingForm = document.getElementById('pricing-inquiry-form');
   const pricingSubmitBtn = document.getElementById('p-submit-btn');
   const pricingSuccessMsg = document.getElementById('p-form-success');
 
   pricingForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // remove this line once a real form endpoint (e.g. Formspree) is connected
-    if (!pricingForm.checkValidity()) return;
-
+    e.preventDefault();
     pricingSubmitBtn.disabled = true;
     pricingSubmitBtn.textContent = 'Sending...';
 
-    // Simulated submission delay — replace with a real fetch() call to your form service
-    setTimeout(() => {
-      pricingSubmitBtn.textContent = 'Submit Request';
+    fetch(pricingForm.action, {
+      method: 'POST',
+      body: new FormData(pricingForm),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        pricingSubmitBtn.textContent = 'Submit Request';
+        pricingSubmitBtn.disabled = false;
+        pricingSuccessMsg.classList.remove('hidden');
+        pricingSuccessMsg.classList.add('flex');
+        pricingForm.reset();
+        setTimeout(() => pricingSuccessMsg.classList.add('hidden'), 7000);
+      } else {
+        alert('Something went wrong. Please try again.');
+        pricingSubmitBtn.disabled = false;
+        pricingSubmitBtn.textContent = 'Submit Request';
+      }
+    })
+    .catch(() => {
+      alert('Network error.');
       pricingSubmitBtn.disabled = false;
-      pricingSuccessMsg.classList.remove('hidden');
-      pricingSuccessMsg.classList.add('flex');
-      pricingForm.reset();
-      setTimeout(() => pricingSuccessMsg.classList.add('hidden'), 7000);
-    }, 700);
+      pricingSubmitBtn.textContent = 'Submit Request';
+    });
   });
 </script>
 
