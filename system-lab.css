@@ -1,0 +1,33 @@
+/* Interactive system lab — hero */
+.hero .blueprint.system-lab{position:relative;min-height:500px;display:block!important;border:1px solid #8de4c523!important;border-radius:26px;background:radial-gradient(ellipse at 50% 50%,#0e2b32 0%,#07141c 50%,#040b10 85%)!important;overflow:hidden!important;box-shadow:inset 0 1px #c8ffe112,0 28px 95px #0007!important;isolation:isolate;touch-action:pan-y}
+.hero .blueprint.system-lab:before{content:'';position:absolute;inset:0;background-image:linear-gradient(#9af5d00c 1px,transparent 1px),linear-gradient(90deg,#9af5d00c 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(ellipse at center,#000,transparent 75%);pointer-events:none}
+.hero .system-lab>*{display:block!important}
+.system-lab .lab-heading{position:absolute;top:22px;left:24px;right:24px;z-index:5;display:flex!important;align-items:flex-start;justify-content:space-between;gap:12px}
+.system-lab .lab-kicker{font:9px monospace;letter-spacing:.16em;color:#8fddc7}
+.system-lab .lab-heading strong{display:block;font-size:16px;letter-spacing:-.03em;margin-top:7px;color:#f0fff8}
+.system-lab .lab-reset{appearance:none;background:#102b32;border:1px solid #9ae7cf35;border-radius:9px;color:#d5fbea;font:10px monospace;padding:9px 12px;cursor:pointer}
+.system-lab .lab-reset:hover,.system-lab .lab-reset:focus-visible{border-color:#a9f9d7;background:#1a3c42}
+.system-lab .lab-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.system-lab .lab-line{fill:none;stroke:#9affd1;stroke-width:1.5;stroke-opacity:.12;transition:stroke-opacity .35s,stroke-width .35s}
+.system-lab .lab-line.on{stroke-opacity:.8;stroke-width:2;stroke-dasharray:7 11;animation:lab-flow 1.3s linear infinite;filter:drop-shadow(0 0 6px #81ffcd)}
+@keyframes lab-flow{to{stroke-dashoffset:-36}}
+.system-lab .lab-core{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:142px;height:142px;border:1px solid #a5f5d24f;border-radius:28px;display:grid!important;align-content:center;justify-items:center;gap:9px;color:#edfff8;background:linear-gradient(145deg,#174b4c,#09232d 75%);box-shadow:0 0 0 12px #84ffd007,0 0 0 29px #84ffd005,0 0 80px #65e2b721;z-index:3;pointer-events:none;transition:box-shadow .4s}
+.system-lab .lab-core .core-glyph{font-size:32px;font-weight:200;color:#a7ffdf;line-height:1}
+.system-lab .lab-core strong{font:11px monospace;letter-spacing:.13em}
+.system-lab .lab-core small{font:9px monospace;color:#9ebbb9}
+.system-lab .lab-node{position:absolute;z-index:4;display:flex!important;align-items:center;gap:8px;justify-content:center;min-width:124px;min-height:48px;border-radius:13px;border:1px solid #a1e7cf40;background:#10232cdd;backdrop-filter:blur(10px);color:#c8e5df;box-shadow:0 12px 30px #0005;cursor:grab;font:11px monospace;user-select:none;touch-action:none;transition:background .25s,border-color .25s,box-shadow .25s}
+.system-lab .lab-node:hover,.system-lab .lab-node:focus-visible{border-color:#a9f9d7;box-shadow:0 0 30px #5beab629;outline-offset:3px}
+.system-lab .lab-node.on{background:#16433e;border-color:#b1ffe0;box-shadow:0 0 22px #6cecb42c;color:#fff}
+.system-lab .lab-node.dragging{cursor:grabbing;transition:none;z-index:9}
+.system-lab .lab-node .node-symbol{font-size:17px;color:#9bf3d2}
+.system-lab .lab-node[data-node="ai"]{left:7%;top:26%}
+.system-lab .lab-node[data-node="automation"]{right:5%;top:28%}
+.system-lab .lab-node[data-node="integrations"]{left:6%;bottom:22%}
+.system-lab .lab-node[data-node="analytics"]{right:6%;bottom:22%}
+.system-lab .lab-bottom{position:absolute;left:24px;right:24px;bottom:19px;display:flex!important;justify-content:space-between;align-items:center;gap:12px;color:#91aca9;font:10px monospace;z-index:5}
+.system-lab .lab-status{color:#a6f9d4}
+.system-lab .lab-pulse{position:absolute;width:8px;height:8px;background:#b7ffe0;border-radius:50%;box-shadow:0 0 14px #a9ffdc;pointer-events:none;z-index:2;opacity:0}
+.system-lab .lab-pulse.active{opacity:1}
+@media(max-width:900px){.hero .blueprint.system-lab{min-height:460px}}
+@media(max-width:650px){.hero .blueprint.system-lab{min-height:440px!important}.system-lab .lab-node{min-width:107px;min-height:44px;font-size:9px}.system-lab .lab-node[data-node="ai"]{left:4%;top:26%}.system-lab .lab-node[data-node="automation"]{right:3%;top:28%}.system-lab .lab-node[data-node="integrations"]{left:3%;bottom:22%}.system-lab .lab-node[data-node="analytics"]{right:3%;bottom:22%}.system-lab .lab-core{width:110px;height:110px;border-radius:24px}.system-lab .lab-core strong{font-size:9px}.system-lab .lab-core small{font-size:8px}.system-lab .lab-bottom{font-size:8px;left:14px;right:14px}.system-lab .lab-heading{left:16px;right:16px}}
+@media(prefers-reduced-motion:reduce){.system-lab .lab-line.on{animation:none}}
